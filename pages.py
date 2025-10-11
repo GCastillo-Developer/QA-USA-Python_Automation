@@ -69,6 +69,7 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver,3)
         self.driver.find_element(*self.FROM_ADDRESS_LOCATOR).send_keys(from_address)
 
+    # Retrieves the value from the From Address field
     def get_from_location(self):
         return self.driver.find_element(*self.FROM_ADDRESS_LOCATOR).get_attribute("value")
 
@@ -77,6 +78,7 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver,3)
         self.driver.find_element(*self.TO_ADDRESS_LOCATOR).send_keys(to_address)
 
+    # Retrieves the value from the To Address field
     def get_to_location(self):
         return self.driver.find_element(*self.TO_ADDRESS_LOCATOR).get_attribute("value")
 
@@ -200,12 +202,15 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR))
         self.driver.find_element(*self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR).click()
 
+    # Enters the card number
     def enter_card_number(self, card_number):
         self.driver.find_element(*self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR).send_keys(card_number)
 
+    # Retrieves the card number
     def retrieve_card_number(self):
         return self.driver.find_element(*self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR).get_attribute("value")
 
+    # Validates the card number
     @staticmethod
     def validate_card_number(card_number):
         if data.CARD_NUMBER == card_number:
@@ -213,16 +218,20 @@ class UrbanRoutesPage:
         else:
             logging.error(f"Invalid card number: {card_number}")
 
+    # Clicks field for data input
     def click_card_code_field(self):
         WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_CARD_CODE_INPUT_LOCATOR))
         self.driver.find_element(*self.CLICK_ON_CARD_CODE_INPUT_LOCATOR).click()
 
+    # Enters card code into field
     def enter_card_code(self, card_code):
         self.driver.find_element(*self.CLICK_ON_CARD_CODE_INPUT_LOCATOR).send_keys(card_code)
 
+    # Retrieves the card code
     def retrieve_card_code(self):
         return self.driver.find_element(*self.CLICK_ON_CARD_CODE_INPUT_LOCATOR).get_attribute("value")
 
+    # Validates the card code
     @staticmethod
     def validate_card_code(card_code):
         if data.CARD_CODE == card_code:
@@ -273,6 +282,7 @@ class UrbanRoutesPage:
     def fill_comment_input(self, comment_text):
         self.driver.find_element(*self.CLICK_ON_COMMENT_INPUT_LOCATOR).send_keys(comment_text)
 
+    # Retrieves the message from the driver
     def retrieve_comment_input(self):
         # Retrieve and assert that the message is stored correctly.
         return self.driver.find_element(*self.CLICK_ON_COMMENT_INPUT_LOCATOR).get_attribute("value")
@@ -289,6 +299,7 @@ class UrbanRoutesPage:
 
         slider[0].click()  # Clicks on toggle switch
 
+    # Checks if toggle switch is on
     def return_toggle_switch(self):
         toggle_switch = self.driver.find_elements(*self.VERIFY_TOGGLE_SWITCH_LOCATOR)
         return toggle_switch[0].get_property("checked")
@@ -321,6 +332,7 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(self.CLICK_ON_THE_ORDER_BUTTON))
         self.driver.find_element(*self.CLICK_ON_THE_ORDER_BUTTON).click()
 
+    # Verifies if car search modal is visible
     def car_search_modal_displayed (self):
         WebDriverWait(self.driver,3).until(EC.visibility_of_element_located(self.VERIFY_CAR_SEARCH_MODAL))
         is_visible = self.driver.find_element(*self.VERIFY_CAR_SEARCH_MODAL).is_displayed()
