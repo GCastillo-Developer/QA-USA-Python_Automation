@@ -2,7 +2,6 @@ import data
 import helpers
 
 from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import DesiredCapabilities
 from pages import UrbanRoutesPage
 
@@ -19,12 +18,12 @@ class TestUrbanRoutes:
         # Checks if server URL is reachable
         if helpers.is_url_reachable(data.URBAN_ROUTES_URL):
             print("Connected to the Urban Routes server")
-            cls.driver.get(data.URBAN_ROUTES_URL)
         else:
             print("Cannot connect to Urban Routes. Check the server is on and still running.")
 
     # Setting the Address (To & From Fields)
     def test_set_route(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
 
         urban_routes_page.enter_from_location(data.ADDRESS_FROM)
@@ -40,6 +39,7 @@ class TestUrbanRoutes:
 
     # Selecting the Supportive Plan
     def test_select_plan(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -49,10 +49,11 @@ class TestUrbanRoutes:
 
         correct_plan = urban_routes_page.find_active_selection()
 
-        assert data.SUPPORTIVE_PLAN in correct_plan, f"Expected '{data.SUPPORTIVE_PLAN}', but got '{correct_plan}'"
+        assert 'Supportive' in correct_plan, f"Expected: Supportive, but got '{correct_plan}'"
 
     # Filling in the Phone Number
     def test_fill_phone_number(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -78,6 +79,7 @@ class TestUrbanRoutes:
 
     # Adding a Credit Card
     def test_fill_card(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -95,10 +97,11 @@ class TestUrbanRoutes:
 
         payment_method_text = urban_routes_page.check_payment_method()
 
-        assert data.PAYMENT_METHOD_TEXT == payment_method_text, f"Expected '{data.PAYMENT_METHOD_TEXT}', but got '{payment_method_text}'"
+        assert 'Card' == payment_method_text, f"Expected: Card, but got '{payment_method_text}'"
 
     # Writing a Comment for the Driver
     def test_comment_for_driver(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -116,6 +119,7 @@ class TestUrbanRoutes:
 
     # Ordering a Blanket and Handkerchiefs
     def test_order_blanket_and_handkerchiefs(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -128,12 +132,11 @@ class TestUrbanRoutes:
         selection_confirmed = urban_routes_page.return_toggle_switch()
 
         # Verify that the selection is confirmed using the correct assertion.
-        assert selection_confirmed is True, f"Slider is not checked: {selection_confirmed}"
+        assert selection_confirmed, f"Slider is not checked: {selection_confirmed}"
 
     # Ordering 2 Ice Creams (Supportive Taxi)
     def test_order_2_ice_creams(self):
-        # Loop iterates twice
-        # for i in range(2):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -151,6 +154,7 @@ class TestUrbanRoutes:
 
     # Ordering a Taxi with the Supportive Tariff
     def test_car_search_model_appears(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
         urban_routes_page = UrbanRoutesPage(self.driver)
         urban_routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
 
@@ -170,7 +174,7 @@ class TestUrbanRoutes:
 
         car_modal = urban_routes_page.car_search_modal_displayed()
 
-        assert car_modal is True, f"Expected car modal to be True, but got {car_modal}"
+        assert car_modal, f"Expected car modal to be True, but got {car_modal}"
 
     @classmethod
     def teardown_class(cls):

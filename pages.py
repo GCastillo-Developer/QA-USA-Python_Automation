@@ -5,7 +5,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 import data
 
-
 class UrbanRoutesPage:
     # Setting Address Locators
     FROM_ADDRESS_LOCATOR = (By.ID, 'from')
@@ -87,13 +86,11 @@ class UrbanRoutesPage:
 
     # Clicks call a taxi button
     def call_a_taxi(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CALL_A_TAXI_LOCATOR))
-        self.driver.find_element(*self.CALL_A_TAXI_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CALL_A_TAXI_LOCATOR)).click()
 
     # Clicks supportive plan option
     def click_on_plan(self):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.SUPPORTIVE_PLAN_ACTION_LOCATOR))
-        self.driver.find_element(*self.SUPPORTIVE_PLAN_ACTION_LOCATOR).click()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.SUPPORTIVE_PLAN_ACTION_LOCATOR)).click()
 
     # Finds the active t-card selection and asserts expected selection
     def find_active_selection(self):
@@ -104,13 +101,11 @@ class UrbanRoutesPage:
 
     # click on the phone number field
     def click_on_phone_number_field(self):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.PHONE_NUMBER_FIELD_LOCATOR))
-        self.driver.find_element(*self.PHONE_NUMBER_FIELD_LOCATOR).click()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.PHONE_NUMBER_FIELD_LOCATOR)).click()
 
     # Clicks on the pop-up phone number field
     def click_on_secondary_phone_number_field(self):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.PHONE_NUMBER_POP_UP_LABEL_LOCATOR))
-        self.driver.find_element(*self.PHONE_NUMBER_POP_UP_LABEL_LOCATOR).click()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.PHONE_NUMBER_POP_UP_LABEL_LOCATOR)).click()
 
     # Enters phone number on pop-up field and asserts value in input field
     def enter_phone_number(self, phone_number):
@@ -122,13 +117,11 @@ class UrbanRoutesPage:
 
     # Clicks the next button on pop-up phone number field
     def click_next_button(self):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CLICK_NEXT_BUTTON_LOCATOR))
-        self.driver.find_element(*self.CLICK_NEXT_BUTTON_LOCATOR).click()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CLICK_NEXT_BUTTON_LOCATOR)).click()
 
     # Clicks on the pop-up code label field
     def click_on_code_label(self):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CODE_LABEL_FIELD_LOCATOR))
-        self.driver.find_element(*self.CODE_LABEL_FIELD_LOCATOR).click()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CODE_LABEL_FIELD_LOCATOR)).click()
 
     # Sends the code to the input field
     def enter_code(self, code):
@@ -136,8 +129,7 @@ class UrbanRoutesPage:
 
     # Clicks the confirm button
     def confirm_button(self):
-        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CONFIRM_BUTTON_LOCATOR))
-        self.driver.find_element(*self.CONFIRM_BUTTON_LOCATOR).click()
+        WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CONFIRM_BUTTON_LOCATOR)).click()
 
     ########################################################################################################################
     # Here is where combine methods are
@@ -189,18 +181,15 @@ class UrbanRoutesPage:
 
     # Click on Payment Method
     def click_on_payment_method(self):
-        WebDriverWait(self.driver,3).until(EC.visibility_of_element_located(self.PAYMENT_METHOD_FIELD_LOCATOR))
-        self.driver.find_element(*self.PAYMENT_METHOD_FIELD_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.visibility_of_element_located(self.PAYMENT_METHOD_FIELD_LOCATOR)).click()
 
     # Click on Add Card
     def click_on_add_card(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_ADD_CARD_LOCATOR))
-        self.driver.find_element(*self.CLICK_ON_ADD_CARD_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_ADD_CARD_LOCATOR)).click()
 
     # Enter a valid Card Number.
     def click_card_number_field(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR))
-        self.driver.find_element(*self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_CARD_NUMBER_INPUT_LOCATOR)).click()
 
     # Enters the card number
     def enter_card_number(self, card_number):
@@ -220,8 +209,7 @@ class UrbanRoutesPage:
 
     # Clicks field for data input
     def click_card_code_field(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_CARD_CODE_INPUT_LOCATOR))
-        self.driver.find_element(*self.CLICK_ON_CARD_CODE_INPUT_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_CARD_CODE_INPUT_LOCATOR)).click()
 
     # Enters card code into field
     def enter_card_code(self, card_code):
@@ -241,8 +229,7 @@ class UrbanRoutesPage:
 
     # Use TAB or simulate a click outside to change focus from the Code field.
     def click_on_payment_method_text(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_ADD_CARD_TEXT_LOCATOR))
-        self.driver.find_element(*self.CLICK_ON_ADD_CARD_TEXT_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_ADD_CARD_TEXT_LOCATOR)).click()
 
     # Ensure the "Link" button becomes clickable.
     def verify_link_clickable(self):
@@ -256,13 +243,11 @@ class UrbanRoutesPage:
 
     # Click "Link" and verify that the card is added successfully.
     def click_link_button(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CHECK_IF_LINK_BUTTON_IS_DISABLED_AND_CLICK_LOCATOR))
-        self.driver.find_element(*self.CHECK_IF_LINK_BUTTON_IS_DISABLED_AND_CLICK_LOCATOR).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CHECK_IF_LINK_BUTTON_IS_DISABLED_AND_CLICK_LOCATOR)).click()
 
     # Click to close window on add a card feature
     def click_on_x_button(self):
-        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_X_BUTTON))
-        self.driver.find_element(*self.CLICK_ON_X_BUTTON).click()
+        WebDriverWait(self.driver,3).until(EC.element_to_be_clickable(self.CLICK_ON_X_BUTTON)).click()
 
     # Card is added successfully when payment method changes from “Cash” to “Card”.
     def check_payment_method(self):
@@ -329,8 +314,7 @@ class UrbanRoutesPage:
 
     # Click "Order" button.
     def click_on_order_button(self):
-        WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(self.CLICK_ON_THE_ORDER_BUTTON))
-        self.driver.find_element(*self.CLICK_ON_THE_ORDER_BUTTON).click()
+        WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(self.CLICK_ON_THE_ORDER_BUTTON)).click()
 
     # Verifies if car search modal is visible
     def car_search_modal_displayed (self):
